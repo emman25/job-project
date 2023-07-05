@@ -1,12 +1,11 @@
 # job-project
-1. import the collections in the collection directory to your local mongodb
 
 ## Installation
 #run backend
-1. run docker / open docker desktop
-2. navigate to backend folder
+
+1. navigate to backend folder
+2.  run "docker compose up -d"
 3. run "npm install"
-4. run "docker compose up -d"
 5. finally run "npm run dev"
 
 #run frontend
@@ -28,6 +27,19 @@ curl --request POST \
   "minSalary": 60000,
   "maxSalary": 80000,
   "description": "We are seeking a skilled software engineer with expertise in JavaScript, Node.js, and React to join our team. The ideal candidate should have strong problem-solving skills and a passion for developing high-quality software solutions."
+}
+'
+
+4. below is curl to create a user
+
+   curl --request POST \
+  --url http://localhost:3010/v1/auth/register \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "KT",
+  "email": "kt@example.com",
+	"location": "Utah",
+	"password": "h2@test"
 }
 '
 
