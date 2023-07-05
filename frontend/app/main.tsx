@@ -47,15 +47,15 @@ export default function Main({ predata, access_token, workTypeData = [], tagData
     try {
       let query = '';
 
-      if (location.trim().length > 0) {
+      if (location?.length > 0) {
         query += `location=${location}&`;
       }
 
-      if (workType.trim().length > 0) {
+      if (workType?.length > 0) {
         query += `workType=${workType}&`;
       }
 
-      if (tag.trim().length > 0) {
+      if (tag?.length > 0) {
         query += `tag=${tag}&`;
       }
 
@@ -82,17 +82,18 @@ export default function Main({ predata, access_token, workTypeData = [], tagData
           <SelectComponent data={workTypeData.map(({ name }) => ({
             value: name,
             label: name,
-          }))} onChange={x => setWorkType(x?.value)} />
+          }))} onChange={x => 
+            setWorkType(x)} />
 
           <SelectComponent data={tagData.map(({ name }) => ({
             value: name,
             label: name,
-          }))} onChange={x => setTag(x?.value)} />
+          }))} onChange={x => setTag(x)} />
 
           <SelectComponent data={locationdata.map(({ name }) => ({
             value: name,
             label: name,
-          }))} onChange={x => setLocation(x?.value)} />
+          }))} onChange={x => setLocation(x)} />
 
           <button className='w-40  bg-gray-200' onClick={() => onSearch()} > Search</button>
         </div>
