@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCV = exports.uploadCV = exports.unsaveJob = exports.saveJob = exports.getSavedJobs = exports.deleteUser = exports.updateUser = exports.getUserById = void 0;
+exports.getCV = exports.uploadCV = exports.unsaveJob = exports.saveJob = exports.getSavedJobs = exports.deleteUser = exports.updateUser = exports.getUserById = exports.hashPassword = void 0;
 var User_1 = __importDefault(require("../models/User"));
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var path_1 = __importDefault(require("path"));
@@ -57,6 +57,7 @@ var hashPassword = function (password, saltRounds) { return __awaiter(void 0, vo
         }
     });
 }); };
+exports.hashPassword = hashPassword;
 var getUserById = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var userId, user, err_1;
     return __generator(this, function (_a) {
@@ -104,7 +105,7 @@ var updateUser = function (req, res, next) { return __awaiter(void 0, void 0, vo
                 if (email)
                     user.email = email;
                 if (!password) return [3 /*break*/, 4];
-                return [4 /*yield*/, hashPassword(password, 10)];
+                return [4 /*yield*/, (0, exports.hashPassword)(password, 10)];
             case 3:
                 hashedPassword = (_b.sent()).hashedPassword;
                 user.password = hashedPassword;

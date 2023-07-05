@@ -6,15 +6,11 @@ import jwt from 'jsonwebtoken'
 
 export const createJobApplication = async (req, res, next) => {
     try {
-        console.log('Creating Applicatio')
-        console.log(req.body)
         const { jobId, email } = req.body;
 
         const job = await Job.findById(jobId);
 
         if (!job) {
-            console.log(jobId)
-            console.log('Not found')
             return res.status(404).json({ error: 'Job not found.' });
         }
 

@@ -4,39 +4,42 @@ import User from '../models/User';
 
 import dotenv from 'dotenv'
 import { sendEmail } from '../utils/send_mail';
+import { hashPassword } from './user_controller';
 
 
 dotenv.config();
 
 export const registerUser = async (req, res, next) => {
-  const { name, email, location } = req.body;
+  const { name, email, location, password } = req.body;
 
   try {
-    console.log('here')
     let user = await User.findOne({ email });
 
     if (user) {
       return res.status(400).json({ code: 400, message: 'User already exists' });
     }
 
-    user = new User({ name, email, location, isEmailVerified: false });
+    const { hashedPassword } = await hashPassword(password, 10);
+
+
+    user = new User({ name, email, location, isEmailVerified: true, password: hashedPassword });
     await user.save();
 
 
-    const emailVerificationToken = jwt.sign({ email }, process.env.JWT_SECRET || '', {
-      expiresIn: '1h',
-    });
+    // const emailVerificationToken = jwt.sign({ email }, process.env.JWT_SECRET || '', {
+    //   expiresIn: '1h',
+    // });
 
-    try {
-      sendEmail(email, `http://localhost:3000/account/verify?token=${emailVerificationToken}`)
+    // try {
+    //   sendEmail(email, `http://localhost:3000/account/verify?token=${emailVerificationToken}`)
       
-    } catch (error) {
-      console.log(error)
-    }
+    // } catch (error) {
+    //   console.log(error)
+    // }
 
     res.status(200).json({
       code: 200,
-      message: 'Registration successful'
+      message: 'Registration successful. Please login'
     });
   } catch (err) {
 

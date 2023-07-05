@@ -50,15 +50,11 @@ var createJobApplication = function (req, res, next) { return __awaiter(void 0, 
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 6, , 7]);
-                console.log('Creating Applicatio');
-                console.log(req.body);
                 _a = req.body, jobId = _a.jobId, email = _a.email;
                 return [4 /*yield*/, Job_1.default.findById(jobId)];
             case 1:
                 job = _b.sent();
                 if (!job) {
-                    console.log(jobId);
-                    console.log('Not found');
                     return [2 /*return*/, res.status(404).json({ error: 'Job not found.' })];
                 }
                 return [4 /*yield*/, User_1.default.findOne({ email: email })];

@@ -44,47 +44,48 @@ var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var User_1 = __importDefault(require("../models/User"));
 var dotenv_1 = __importDefault(require("dotenv"));
-var send_mail_1 = require("../utils/send_mail");
+var user_controller_1 = require("./user_controller");
 dotenv_1.default.config();
 var registerUser = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, email, location, user, emailVerificationToken, err_1;
+    var _a, name, email, location, password, user, hashedPassword, err_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, name = _a.name, email = _a.email, location = _a.location;
+                _a = req.body, name = _a.name, email = _a.email, location = _a.location, password = _a.password;
                 _b.label = 1;
             case 1:
-                _b.trys.push([1, 4, , 5]);
-                console.log('here');
+                _b.trys.push([1, 5, , 6]);
                 return [4 /*yield*/, User_1.default.findOne({ email: email })];
             case 2:
                 user = _b.sent();
                 if (user) {
                     return [2 /*return*/, res.status(400).json({ code: 400, message: 'User already exists' })];
                 }
-                user = new User_1.default({ name: name, email: email, location: location, isEmailVerified: false });
-                return [4 /*yield*/, user.save()];
+                return [4 /*yield*/, (0, user_controller_1.hashPassword)(password, 10)];
             case 3:
+                hashedPassword = (_b.sent()).hashedPassword;
+                user = new User_1.default({ name: name, email: email, location: location, isEmailVerified: true, password: hashedPassword });
+                return [4 /*yield*/, user.save()];
+            case 4:
                 _b.sent();
-                emailVerificationToken = jsonwebtoken_1.default.sign({ email: email }, process.env.JWT_SECRET || '', {
-                    expiresIn: '1h',
-                });
-                try {
-                    (0, send_mail_1.sendEmail)(email, "http://localhost:3000/account/verify?token=".concat(emailVerificationToken));
-                }
-                catch (error) {
-                    console.log(error);
-                }
+                // const emailVerificationToken = jwt.sign({ email }, process.env.JWT_SECRET || '', {
+                //   expiresIn: '1h',
+                // });
+                // try {
+                //   sendEmail(email, `http://localhost:3000/account/verify?token=${emailVerificationToken}`)
+                // } catch (error) {
+                //   console.log(error)
+                // }
                 res.status(200).json({
                     code: 200,
-                    message: 'Registration successful'
+                    message: 'Registration successful. Please login'
                 });
-                return [3 /*break*/, 5];
-            case 4:
+                return [3 /*break*/, 6];
+            case 5:
                 err_1 = _b.sent();
                 next(err_1);
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
         }
     });
 }); };
