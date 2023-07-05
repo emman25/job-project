@@ -1,7 +1,5 @@
 # job-project
-import database
-open your mongodb compass
-connect to your local connect
+1. import the collections in the collection directory to your local mongodb
 
 ## Installation
 #run backend
