@@ -28,22 +28,22 @@ const DropdownMenuComponent = ({ letter = 'T', onClick }:{letter: string, onClic
                     sideOffset={5}
                 >
                     <Link href={'/saved-jobs'}>
-                        <DropdownMenu.Item className="group py-6 text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                        <DropdownMenu.Item className="group py-6 text-[13px] text-white leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                             Saved Jobs{' '}
                         </DropdownMenu.Item>
                     </Link>
 
                     <Link href={'/'}>
-                        <DropdownMenu.Item className="group py-6 text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                        <DropdownMenu.Item className="group py-6 text-[13px] text-white leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                             Jobs{' '}
                         </DropdownMenu.Item>
                     </Link>
                     <Link href={'/profile'}>
-                        <DropdownMenu.Item className="group py-6 text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                        <DropdownMenu.Item className="group py-6 text-[13px] text-white leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                             My Profile{' '}
                         </DropdownMenu.Item>
                     </Link>
-                    <DropdownMenu.Item onClick={() => onClick()} className="group py-6 text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                    <DropdownMenu.Item onClick={() => onClick()} className="group text-white py-6 text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                         Logout{' '}
                     </DropdownMenu.Item>
                 </DropdownMenu.Content>
