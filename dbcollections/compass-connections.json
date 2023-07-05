@@ -1,0 +1,43 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "a5b27bd5-228b-4be7-98c9-39c0dd011b79",
+      "connectionOptions": {
+        "connectionString": "mongodb+srv://dynatondev_1:RSLSmE9fWfnbsGyi@cluster0.8skri.mongodb.net/rtb-dev?retryWrites=true&w=majority",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      },
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1688457819437"
+        }
+      },
+      "favorite": {
+        "name": "rtb",
+        "color": "color6"
+      }
+    },
+    {
+      "id": "2270cb01-64d2-4f75-a122-3bc76cdde6b0",
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      },
+      "favorite": {
+        "name": "job"
+      },
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1688551472674"
+        }
+      }
+    }
+  ]
+}
