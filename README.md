@@ -15,8 +15,8 @@
 ## Usage
 1. Open your web browser and visit `http://localhost:3000`
 2. Follow the instructions on the website to use the application.
-3.Below is a Curl to create a job
-4.
+3. Below is a Curl to create a job
+  
    curl --request POST \
   --url http://localhost:3010/v1/jobs \
   --header 'Content-Type: application/json' \
